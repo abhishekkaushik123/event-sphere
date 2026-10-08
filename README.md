@@ -6,7 +6,7 @@ A full-stack event booking platform: browse events, book seats, get admin approv
 
 ---
 
-## 1. Resume claims → where they live in the code
+## 1. Resume claims
 
 | Resume claim | Implementation |
 |---|---|
@@ -42,31 +42,13 @@ A full-stack event booking platform: browse events, book seats, get admin approv
  waitlisted ──────────► cancelled / rejected  (seats released, refund if paid, next waitlisted user promoted)
 ```
 
-## 4. Run it locally
-
-**Prerequisites:** Node.js 18+, MongoDB running locally (or a MongoDB Atlas URI).
-
-```bash
-# Backend
-cd server
-cp .env.example .env        # then set JWT_SECRET (and MONGO_URI if using Atlas)
-npm install
-npm run seed                # creates the admin account + 6 sample events
-npm run dev                 # API on http://localhost:5000
-
-# Frontend (new terminal)
-cd client
-npm install
-npm run dev                 # app on http://localhost:5173
-```
-
 - **Admin login (from seed):** `admin@eventsphere.com` / `Admin@123` (change in `.env` before seeding)
 - **OTP emails:** with `SMTP_HOST` empty, emails are **printed in the server terminal**. For real email, fill the SMTP fields (a Gmail app password works).
 - Users always register as `user`; the only way to get an admin is the seed script, so nobody can self-promote.
 
 **Quick demo script:** register a user → copy the OTP from the server console → book an event → log in as admin → approve → log back in as user → pay → open QR ticket → admin Check-in tab → enter the code. Then book a tiny event (Pottery workshop, 12 seats) with several accounts to see the waitlist.
 
-## 5. API reference
+## 4. API reference
 
 | Method | Endpoint | Access | Purpose |
 |---|---|---|---|
